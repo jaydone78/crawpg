@@ -253,23 +253,8 @@
 
 
 <script>
-    // $(document).ready(function () {
-    //     var tbody = '<tbody>';
-    //     $.getJSON('/crawlersimpleinfo.json', function (data) {
-    //         for (var i = 0; i < data.length; i++) {
-    //             tbody += '<tr><td><input type="checkbox" value=""></td>'
-    //                 + '<td>' + data[i].program + '</td>'
-    //                 + '<td>' + data[i].type + '</td>'
-    //                 + '<td>' + data[i].databaseType + '</td>'
-    //                 + '<td>' + data[i].workingTime + '</td>'
-    //                 + '<td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">配置信息</button></td>';
-    //         }
-    //         tbody += '</tr></tbody>'
-    //         $('#crawlerinfotable').appendtbody);
-    //     })
-    // })
-    var tbody = '';
 
+    var tbody = '';
     $.getJSON('/crawlersimpleinfo.json', function (data) {
         for (var i = 0; i < data.length; i++) {
             tbody += '<tr><td><input type="checkbox" value=""></td>'
