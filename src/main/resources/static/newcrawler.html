@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>可用爬虫程序</title>
+    <title>新增爬虫程序</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,14 +22,6 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-
-    <style>
-        th, td {
-            text-align: center;
-            vertical-align: middle !important;
-        }
-    </style>
-
 
 </head>
 
@@ -59,8 +51,8 @@
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <span class="badge badge-danger">9+</span>
             </a>
@@ -72,8 +64,8 @@
             </div>
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <span class="badge badge-danger">7</span>
             </a>
@@ -85,8 +77,8 @@
             </div>
         </li>
         <li class="nav-item dropdown no-arrow">
-            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user-circle fa-fw"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -111,8 +103,8 @@
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>页面</span>
             </a>
@@ -124,7 +116,7 @@
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">Other Pages:</h6>
                 <a class="dropdown-item" href="404.html">404 Page</a>
-                <a class="dropdown-item active" href="blank.html">任务细节</a>
+                <a class="dropdown-item active" href="blank.html">Blank Page</a>
             </div>
         </li>
         <li class="nav-item">
@@ -148,55 +140,56 @@
                 <li class="breadcrumb-item">
                     <a href="index.html">控制台</a>
                 </li>
-                <li class="breadcrumb-item active">可用爬虫程序</li>
+                <li class="breadcrumb-item active">新增爬虫程序</li>
             </ol>
 
             <!-- Page Content -->
-            <h4>爬虫管理</h4>
-            <!-- Modal -->
-            <div style="float: right; margin-bottom: 10px;">
-                <a href="newcrawler.html" type="button" class="btn btn-success btn-sm">部署</a>
-                <button type="button" class="btn btn-danger btn-sm">删除</button>
-                <br>
-            </div>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">测试任务</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p></p>
-                        </div>
-                        <div class="modal-footer">
-                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>-->
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">完成</button>
-                        </div>
+            <h1>配置信息</h1>
+            <hr>
+            <form style="width: 70%">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">爬虫程序名</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="程序名">
                     </div>
                 </div>
-            </div>
+                <div class="form-group row">
+                    <label for="databaseAddress" class="col-sm-2 col-form-label">数据库地址</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="databaseAddress" placeholder="database address">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="databasePassword" class="col-sm-2 col-form-label">数据库密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="databasePassword" placeholder="database password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tableName" class="col-sm-2 col-form-label">数据表名</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="tableName" placeholder="tableName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="dataItems" class="col-sm-2 col-form-label">数据字段</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="dataItems" placeholder="database password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="databasePassword" class="col-sm-2 col-form-label">数据库密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="databasePassword" placeholder="database password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10" >
+                        <button type="submit" class="btn btn-primary">部署</button>
+                    </div>
+                </div>
+            </form>
 
-            <div class="panel panel-default">
-                <table class="table table-sm" id="crawlerinfotable">
-                    <thead>
-                    <tr>
-                        <!--<th>#</th>-->
-                        <th style="width: 1%"></th>
-                        <th style="width: 12%">程序</th>
-                        <th style="width: 21%">类型</th>
-                        <th style="width: 21%">数据库类型</th>
-                        <th style="width: 22%">执行时间</th>
-                        <th style="width: 10%"></th>
-                    </tr>
-                    </thead>
-                    <tbody id="infobody"></tbody>
-                </table>
-            </div>
         </div>
         <!-- /.container-fluid -->
 
@@ -221,18 +214,17 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel1" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">Ready to Leave?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.
-            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="login.html">Logout</a>
@@ -250,41 +242,6 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
-
-
-<script>
-
-    var tbody = '';
-    $.getJSON('/crawlersimpleinfo.json', function (data) {
-        for (var i = 0; i < data.length; i++) {
-            tbody += '<tr><td><input type="checkbox" value=""></td>'
-                + '<td>' + data[i].program + '</td>'
-                + '<td>' + data[i].type + '</td>'
-                + '<td>' + data[i].databaseType + '</td>'
-                + '<td>' + data[i].workingTime + '</td>'
-                + '<td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">配置信息</button></td>';
-        }
-        tbody += '</tr>'
-        $('#infobody').html(tbody);
-    })
-
-    $('#exampleModal').on('show.bs.modal', function () {
-        var modal = $(this);
-        $.getJSON('/crawlerinfo.json?', {id: 1}, function (data) {
-            var text = '功能描述：' + data.description + '<br>' +
-                '数据字段：' + data.tableitems + '<br>' +
-                '数据库类型：' + data.databaseType + '<br>' +
-                '数据库名：' + data.databaseName + '<br>' +
-                '表名：' + data.tableName + '<br>' +
-                '运行参数：' + data.parameters + '<br>' +
-                '程序地址：' + data.address;
-            +'<br>'
-            modal.find('.modal-body').html(text);
-        });
-    })
-
-</script>
-
 
 </body>
 
