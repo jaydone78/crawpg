@@ -155,7 +155,7 @@
             <h4>爬虫管理</h4>
             <!-- Modal -->
             <div style="float: right; margin-bottom: 10px;">
-                <a href="newcrawler.html" type="button" class="btn btn-success btn-sm">部署</a>
+                <a class="btn btn-success btn-sm" href="newcrawler.html">部署</a>
                 <button type="button" class="btn btn-danger btn-sm">删除</button>
                 <br>
             </div>
@@ -253,7 +253,6 @@
 
 
 <script>
-
     var tbody = '';
     $.getJSON('/crawlersimpleinfo.json', function (data) {
         for (var i = 0; i < data.length; i++) {
@@ -284,7 +283,6 @@
     })
 
 </script>
-
 
 </body>
 
