@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>任务细节</title>
+  <title>新增爬虫程序</title>
 
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,8 @@
   <ul class="navbar-nav ml-auto ml-md-0">
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-bell fa-fw"></i>
         <span class="badge badge-danger">9+</span>
       </a>
@@ -65,7 +66,8 @@
     </li>
     <li class="nav-item dropdown no-arrow mx-1">
       <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-envelope fa-fw"></i>
         <span class="badge badge-danger">7</span>
       </a>
@@ -78,7 +80,8 @@
     </li>
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-user-circle fa-fw"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -104,7 +107,8 @@
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button"
-         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
         <i class="fas fa-fw fa-folder"></i>
         <span>页面</span>
       </a>
@@ -116,7 +120,7 @@
         <div class="dropdown-divider"></div>
         <h6 class="dropdown-header">Other Pages:</h6>
         <a class="dropdown-item" href="404.html">404 Page</a>
-        <a class="dropdown-item active" href="blank.html">任务细节</a>
+        <a class="dropdown-item active" href="blank.html">Blank Page</a>
       </div>
     </li>
     <li class="nav-item">
@@ -140,69 +144,65 @@
         <li class="breadcrumb-item">
           <a href="index.html">控制台</a>
         </li>
-        <li class="breadcrumb-item active">任务细节</li>
+        <li class="breadcrumb-item active">新增爬虫程序</li>
       </ol>
 
       <!-- Page Content -->
-      <h4>执行中任务</h4>
-      <div style="float: right; margin-bottom: 10px;">
-        <a class="btn btn-primary btn-sm" href="newjob.html">新建任务</a>
-        <button class="btn btn-warning btn-sm">终止任务</button>
-        <button class="btn btn-success btn-sm">启动任务</button>
-        <button type="button" class="btn btn-danger btn-sm">删除任务</button>
-        <br>
-      </div>
-
-
-      <div class="panel panel-default">
-        <div class="panel-heading">任务列表</div>
-        <table class="table">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>爬虫程序名</th>
-            <th>类型</th>
-            <th>运行状态</th>
-            <th>数据库类型</th>
-            <th>数据库地址</th>
-            <th>表名</th>
-            <th>查看数据</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>测试</td>
-            <td><span class="badge badge-warning">等待</span></td>
-            <td>blank</td>
-            <td>mongodb</td>
-            <td>test2</td>
-            <td>aiqiyi_zongyi2</td>
-            <td><a href="/tables?id=345" class="btn btn-primary btn-sm">查看数据</a></td>
-          </tr>
-          <tr>
-            <td scope="row">2</td>
-            <td>测试</td>
-            <td><span class="badge badge-success">运行中</span></td>
-            <td>blank</td>
-            <td>mongodb</td>
-            <td>test2</td>
-            <td>aiqiyi_zongyi2</td>
-            <td><a href="/tables?id=356" class="btn btn-primary btn-sm">查看数据</a></td>
-          </tr>
-          <tr>
-            <td scope="row">3</td>
-            <td>测试</td>
-            <td><span class="badge badge-danger">未部署</span></td>
-            <td>blank</td>
-            <td>mongodb</td>
-            <td>test2</td>
-            <td>aiqiyi_zongyi2</td>
-            <td><a href="/tables?id=129" class="btn btn-primary btn-sm">查看数据</a></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <h1>配置信息</h1>
+      <hr>
+      <form style="width: 80%">
+        <div class="form-group row">
+          <label for="inputEmail3" class="col-sm-2 col-form-label">爬虫程序名</label>
+          <div class="col-sm-10" id="inputEmail3">
+            <select class="custom-select">
+              <option selected>选择爬虫程序</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <!--<input type="email" class="form-control" id="inputEmail3" placeholder="程序名">-->
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="databaseAddress" class="col-sm-2 col-form-label">数据库地址</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="databaseAddress"
+                   placeholder="database address">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="databasePassword" class="col-sm-2 col-form-label">数据库密码</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="databasePassword"
+                   placeholder="database password">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="tableName" class="col-sm-2 col-form-label">数据表名</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="tableName" placeholder="tableName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="dataItems" class="col-sm-2 col-form-label">数据字段</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="dataItems"
+                   placeholder="database password">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="expression" class="col-sm-2 col-form-label">表达式</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="expression"
+                   placeholder="database password">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-success">部署</button>
+          </div>
+        </div>
+      </form>
 
     </div>
     <!-- /.container-fluid -->
@@ -229,7 +229,8 @@
 
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
