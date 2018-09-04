@@ -161,45 +161,45 @@
           <tr>
             <th>#</th>
             <th>爬虫程序名</th>
-            <th>类型</th>
             <th>运行状态</th>
+            <th>类型</th>
             <th>数据库类型</th>
             <th>数据库地址</th>
             <th>表名</th>
             <th>查看数据</th>
           </tr>
           </thead>
-          <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>测试</td>
-            <td><span class="badge badge-warning">等待</span></td>
-            <td>blank</td>
-            <td>mongodb</td>
-            <td>test2</td>
-            <td>aiqiyi_zongyi2</td>
-            <td><a href="/tables?id=345" class="btn btn-primary btn-sm">查看数据</a></td>
-          </tr>
-          <tr>
-            <td scope="row">2</td>
-            <td>测试</td>
-            <td><span class="badge badge-success">运行中</span></td>
-            <td>blank</td>
-            <td>mongodb</td>
-            <td>test2</td>
-            <td>aiqiyi_zongyi2</td>
-            <td><a href="/tables?id=356" class="btn btn-primary btn-sm">查看数据</a></td>
-          </tr>
-          <tr>
-            <td scope="row">3</td>
-            <td>测试</td>
-            <td><span class="badge badge-danger">未部署</span></td>
-            <td>blank</td>
-            <td>mongodb</td>
-            <td>test2</td>
-            <td>aiqiyi_zongyi2</td>
-            <td><a href="/tables?id=129" class="btn btn-primary btn-sm">查看数据</a></td>
-          </tr>
+          <tbody id="infobody">
+          <!--<tr>-->
+            <!--<td scope="row">1</td>-->
+            <!--<td>测试</td>-->
+            <!--<td><span class="badge badge-warning">等待</span></td>-->
+            <!--<td>blank</td>-->
+            <!--<td>mongodb</td>-->
+            <!--<td>test2</td>-->
+            <!--<td>aiqiyi_zongyi2</td>-->
+            <!--<td><a href="/tables?id=345" class="btn btn-primary btn-sm">查看数据</a></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td scope="row">2</td>-->
+            <!--<td>测试</td>-->
+            <!--<td><span class="badge badge-success">运行中</span></td>-->
+            <!--<td>blank</td>-->
+            <!--<td>mongodb</td>-->
+            <!--<td>test2</td>-->
+            <!--<td>aiqiyi_zongyi2</td>-->
+            <!--<td><a href="/tables?id=356" class="btn btn-primary btn-sm">查看数据</a></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td scope="row">3</td>-->
+            <!--<td>测试</td>-->
+            <!--<td><span class="badge badge-danger">未部署</span></td>-->
+            <!--<td>blank</td>-->
+            <!--<td>mongodb</td>-->
+            <!--<td>test2</td>-->
+            <!--<td>aiqiyi_zongyi2</td>-->
+            <!--<td><a href="/tables?id=129" class="btn btn-primary btn-sm">查看数据</a></td>-->
+          <!--</tr>-->
           </tbody>
         </table>
       </div>
@@ -257,6 +257,30 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
+
+<script>
+  var tbody = '';
+  $.getJSON('/projinfo.json', function (data) {
+    for (var i = 0; i < data.length; i++) {
+      tbody += '<td>' + data[i].projName + '</td>'
+
+      if (data[i].status == '运行中') {
+        tbody += '<td><span class="badge badge-success">运行中</span></td>';
+      } else if (data[i].status == '未部署') {
+        tbody += '<td><span class="badge badge-danger">未部署</span></td>';
+      } else if (data[i].status == '等待') {
+        tbody += '<td><span class="badge badge-warning">等待</span></td>';
+      }
+      tbody += '<td>' + data[i].projType+ '</td>'
+          + '<td>' + data[i].databaseType + '</td>'
+          + '<td>' + data[i].databaseAddress + '</td>'
+          + '<td>' + data[i].tableName + '</td>'
+          + '<td><a href="/tables?id=' + data[i].id + '"' + ' class="btn btn-primary btn-sm">查看数据</a></td>';
+    }
+    tbody += '</tr>'
+    $('#infobody').html(tbody);
+  })
+</script>
 
 </body>
 

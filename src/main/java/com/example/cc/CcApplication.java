@@ -19,8 +19,9 @@ public class CcApplication {
   private static Map<String, CrawlerInfo> InfoTable = new HashMap<>();
   private static List<SimpleInfo> simpleInfoList = new ArrayList<>();
   private static List<UserInfo> userInfoList = new ArrayList<>();
+  private static List<RunningProj> runningProjList = new ArrayList<>();
 
-  public static void init() {
+  private static void initInfoTable() {
     CrawlerInfo info = new CrawlerInfo();
     info.setAddress("/home/jar/crawler_test.jar");
     info.setDatabaseName("test2");
@@ -30,17 +31,21 @@ public class CcApplication {
     info.setParameters("iqiyi");
     info.setTableName("test2");
     InfoTable.put("1", info);
+  }
 
-    SimpleInfo info1 = new SimpleInfo();
-    info1.setDatabaseType("mongo");
-    info1.setProgram("iqiyi");
-    info1.setType("腾讯任务");
-    info1.setWorkingTime("2018.7.19-2018.8.16");
-
+  private static void initSimpleInfoList() {
     for (int i = 0; i < 5; i++) {
+      SimpleInfo info1 = new SimpleInfo();
+      info1.setDatabaseType("mongo");
+      info1.setProgram("iqiyi");
+      info1.setType("腾讯任务");
+      info1.setWorkingTime("2018.7.19-2018.8.16");
+      info1.setId(simpleInfoList.size() + 1);
       simpleInfoList.add(info1);
     }
+  }
 
+  private static void initUserInfoList() {
     try {
       BufferedReader reader = new BufferedReader(
           new FileReader("./file/userinfo"));
@@ -62,6 +67,37 @@ public class CcApplication {
     }
   }
 
+  private static void initRunningProjList() {
+    try {
+      BufferedReader reader = new BufferedReader(
+          new FileReader("./file/running_proc"));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        String[] words = line.split(" ");
+
+        RunningProj proj = new RunningProj();
+        proj.setProjName(words[0]);
+        proj.setStatus(words[1]);
+        proj.setProjType(words[2]);
+        proj.setDatabaseType(words[3]);
+        proj.setDatabaseAddress(words[4]);
+        proj.setTableName(words[5]);
+        proj.setId(runningProjList.size() + 1);
+        runningProjList.add(proj);
+      }
+      reader.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public static void init() {
+    initInfoTable();
+    initSimpleInfoList();
+    initUserInfoList();
+    initRunningProjList();
+  }
+
   public static void main(String[] args) {
     init();
     SpringApplication.run(CcApplication.class, args);
@@ -80,5 +116,10 @@ public class CcApplication {
   @RequestMapping(value = "/userinfo.json")
   public List<UserInfo> getUserInfoList() {
     return userInfoList;
+  }
+
+  @RequestMapping(value = "/projinfo.json")
+  public List<RunningProj> getRunningProjList() {
+    return runningProjList;
   }
 }

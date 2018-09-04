@@ -5,6 +5,15 @@ public class SimpleInfo {
   private String type;
   private String databaseType;
   private String workingTime;
+  private Integer id;
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public String getProgram() {
     return program;

@@ -8,6 +8,15 @@ public class CrawlerInfo {
   private String tableName;
   private String parameters;
   private String address;
+  private Integer id;
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public String getDescription() {
     return description;
