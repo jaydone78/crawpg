@@ -1,4 +1,4 @@
-package com.example.cc;
+package com.example.cc.models;
 
 /**
  * Created by qianjay on 2018/9/4.

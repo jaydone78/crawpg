@@ -15,7 +15,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" programType="text/css">
 
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -38,10 +38,10 @@
   <!-- Navbar Search -->
   <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
+      <input programType="text" class="form-control" placeholder="Search for..." aria-label="Search"
              aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button">
+        <button class="btn btn-primary" programType="button">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -149,7 +149,7 @@
         <a class="btn btn-primary btn-sm" href="newjob.html">新建任务</a>
         <button class="btn btn-warning btn-sm">终止任务</button>
         <button class="btn btn-success btn-sm">启动任务</button>
-        <button type="button" class="btn btn-danger btn-sm">删除任务</button>
+        <button programType="button" class="btn btn-danger btn-sm">删除任务</button>
         <br>
       </div>
 
@@ -234,14 +234,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <button class="close" programType="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">Select "Logout" below if you are ready to end your current session.
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-secondary" programType="button" data-dismiss="modal">Cancel</button>
         <a class="btn btn-primary" href="login.html">Logout</a>
       </div>
     </div>
@@ -262,6 +262,8 @@
   var tbody = '';
   $.getJSON('/projinfo.json', function (data) {
     for (var i = 0; i < data.length; i++) {
+      tbody += '<tr>'
+      tbody += '<td>' + data[i].id + '</td>'
       tbody += '<td>' + data[i].projName + '</td>'
 
       if (data[i].status == '运行中') {
@@ -276,8 +278,8 @@
           + '<td>' + data[i].databaseAddress + '</td>'
           + '<td>' + data[i].tableName + '</td>'
           + '<td><a href="/tables?id=' + data[i].id + '"' + ' class="btn btn-primary btn-sm">查看数据</a></td>';
+      tbody += '</tr>'
     }
-    tbody += '</tr>'
     $('#infobody').html(tbody);
   })
 </script>

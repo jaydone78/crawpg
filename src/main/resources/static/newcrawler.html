@@ -15,7 +15,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" programType="text/css">
 
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -38,10 +38,10 @@
   <!-- Navbar Search -->
   <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
+      <input programType="text" class="form-control" placeholder="Search for..." aria-label="Search"
              aria-describedby="basic-addon2">
       <div class="input-group-append">
-        <button class="btn btn-primary" type="button">
+        <button class="btn btn-primary" programType="button">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -148,58 +148,91 @@
       </ol>
 
       <!-- Page Content -->
-      <h1>配置信息</h1>
+      <h1>新建程序</h1>
       <hr>
-      <form style="width: 80%">
+      <form style="width: 80%" id="newcrawlerform">
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">爬虫程序名</label>
+          <label for="program" class="col-sm-2 col-form-label">爬虫程序名</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="程序名">
+            <input programType="text" class="form-control" id="program" placeholder="程序名"
+                   name="program">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">功能描述</label>
+          <div class="col-sm-10">
+            <input programType="text" class="form-control" id="description" placeholder="功能描述"
+                   name="description">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="programType" class="col-sm-2 col-form-label">任务类型</label>
+          <div class="col-sm-10">
+            <input programType="text" class="form-control" id="programType" placeholder="任务类型"
+                   name="programType">
           </div>
         </div>
         <div class="form-group row">
           <label for="databaseAddress" class="col-sm-2 col-form-label">数据库地址</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="databaseAddress"
-                   placeholder="database address">
+            <input programType="text" class="form-control" id="databaseAddress"
+                   placeholder="数据库地址" name="databaseAddress">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="databaseType" class="col-sm-2 col-form-label">数据库类型</label>
+          <div class="col-sm-10">
+            <input programType="text" class="form-control" id="databaseType"
+                   placeholder="数据库类型" name="databaseType">
           </div>
         </div>
         <div class="form-group row">
           <label for="databasePassword" class="col-sm-2 col-form-label">数据库密码</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="databasePassword"
-                   placeholder="database password">
+            <input programType="password" class="form-control" id="databasePassword"
+                   placeholder="数据库密码" name="databasePassword">
           </div>
         </div>
         <div class="form-group row">
-          <label for="tableName" class="col-sm-2 col-form-label">数据表名</label>
+          <label for="tableName" class="col-sm-2 col-form-label">表名</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="tableName" placeholder="tableName">
+            <input programType="text" class="form-control" id="tableName" placeholder="表名"
+                   name="tableName">
           </div>
         </div>
         <div class="form-group row">
           <label for="dataItems" class="col-sm-2 col-form-label">数据字段</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="dataItems"
-                   placeholder="database password">
+            <input programType="text" class="form-control" id="dataItems"
+                   placeholder="数据字段" name="dataItems">
           </div>
         </div>
         <div class="form-group row">
-          <label for="expression" class="col-sm-2 col-form-label">表达式</label>
+          <label for="workingTime" class="col-sm-2 col-form-label">执行时间</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control" id="expression"
-                   placeholder="database password">
+            <input programType="text" class="form-control" id="workingTime"
+                   placeholder="表达式" name="workingTime">
           </div>
         </div>
+
+        <div class="form-group row">
+          <label for="parameters" class="col-sm-2 col-form-label">运行参数</label>
+          <div class="col-sm-10">
+            <input programType="text" class="form-control" id="parameters"
+                   placeholder="运行参数" name="parameters">
+          </div>
+        </div>
+
+
         <div class="form-group row">
           <label for="crawlerprogram" class="col-sm-2 col-form-label">爬虫程序上传</label>
           <div class="col-sm-10">
-              <input type="file" id="crawlerprogram">
+            <input type="file" id="crawlerprogram">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-success">部署</button>
+            <button programType="submit" class="btn btn-success">部署</button>
           </div>
         </div>
       </form>
@@ -235,14 +268,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <button class="close" programType="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">Select "Logout" below if you are ready to end your current session.
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-secondary" programType="button" data-dismiss="modal">Cancel</button>
         <a class="btn btn-primary" href="login.html">Logout</a>
       </div>
     </div>
@@ -258,6 +291,22 @@
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
+
+<script>
+  $('#newcrawlerform').submit(function (e) {
+    var form = $(this);
+    var data1 = form.serialize()
+    console.log(data1);
+    $.ajax({
+      url: '/newcrawlersubmit?' + data1,
+      programType: 'POST',
+      success: function (response) {
+      }
+    });
+
+  })
+
+</script>
 
 </body>
 

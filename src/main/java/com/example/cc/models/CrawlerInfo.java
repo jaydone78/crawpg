@@ -1,14 +1,33 @@
-package com.example.cc;
+package com.example.cc.models;
 
 public class CrawlerInfo {
   private String description;
-  private String tableitems;
+  private String dataItems;
   private String databaseType;
-  private String databaseName;
+  private String databaseAddress;
+  private String databasePassword;
+  private String workingTime;
   private String tableName;
   private String parameters;
   private String address;
   private Integer id;
+
+
+  public String getWorkingTime() {
+    return workingTime;
+  }
+
+  public void setWorkingTime(String workingTime) {
+    this.workingTime = workingTime;
+  }
+
+  public String getDatabasePassword() {
+    return databasePassword;
+  }
+
+  public void setDatabasePassword(String databasePassword) {
+    this.databasePassword = databasePassword;
+  }
 
   public Integer getId() {
     return id;
@@ -26,12 +45,12 @@ public class CrawlerInfo {
     this.description = description;
   }
 
-  public String getTableitems() {
-    return tableitems;
+  public String getDataItems() {
+    return dataItems;
   }
 
-  public void setTableitems(String tableitems) {
-    this.tableitems = tableitems;
+  public void setDataItems(String dataItems) {
+    this.dataItems = dataItems;
   }
 
   public String getDatabaseType() {
@@ -42,12 +61,12 @@ public class CrawlerInfo {
     this.databaseType = databaseType;
   }
 
-  public String getDatabaseName() {
-    return databaseName;
+  public String getDatabaseAddress() {
+    return databaseAddress;
   }
 
-  public void setDatabaseName(String databaseName) {
-    this.databaseName = databaseName;
+  public void setDatabaseAddress(String databaseAddress) {
+    this.databaseAddress = databaseAddress;
   }
 
   public String getTableName() {

@@ -1,8 +1,8 @@
-package com.example.cc;
+package com.example.cc.models;
 
 public class SimpleInfo {
   private String program;
-  private String type;
+  private String programType;
   private String databaseType;
   private String workingTime;
   private Integer id;
@@ -23,12 +23,12 @@ public class SimpleInfo {
     this.program = program;
   }
 
-  public String getType() {
-    return type;
+  public String getProgramType() {
+    return programType;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setProgramType(String programType) {
+    this.programType = programType;
   }
 
   public String getDatabaseType() {
