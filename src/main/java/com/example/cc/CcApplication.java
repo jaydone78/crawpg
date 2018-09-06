@@ -4,8 +4,11 @@ import com.example.cc.models.CrawlerInfo;
 import com.example.cc.models.RunningProj;
 import com.example.cc.models.SimpleInfo;
 import com.example.cc.models.UserInfo;
+import com.google.gson.Gson;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,31 +23,29 @@ import java.util.Map;
 @RestController
 public class CcApplication {
 
-  private static Map<String, CrawlerInfo> InfoTable = new HashMap<>();
+  private static Map<String, CrawlerInfo> infoTable = new HashMap<>();
   private static List<SimpleInfo> simpleInfoList = new ArrayList<>();
   private static List<UserInfo> userInfoList = new ArrayList<>();
   private static List<RunningProj> runningProjList = new ArrayList<>();
+  private static Gson gson = new Gson();
+
 
   private static void initInfoTable() {
-    CrawlerInfo info = new CrawlerInfo();
-    info.setAddress("/home/jar/crawler_test.jar");
-    info.setDatabaseAddress("test2");
-    info.setDatabaseType("mongo");
-    info.setDescription("爬取爱奇艺首页的热门电影列表");
-    info.setDataItems("{\"爬取时间\": \"crawl time\"} ");
-    info.setParameters("iqiyi");
-    info.setTableName("test2");
-    InfoTable.put("1", info);
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader("./file/infotable"));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        CrawlerInfo info = gson.fromJson(line, CrawlerInfo.class);
+        infoTable.put(info.getId(), info);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private static void initSimpleInfoList() {
-    for (int i = 0; i < 5; i++) {
-      SimpleInfo info1 = new SimpleInfo();
-      info1.setDatabaseType("mongo");
-      info1.setProgram("iqiyi");
-      info1.setProgramType("腾讯任务");
-      info1.setWorkingTime("2018.7.19-2018.8.16");
-      info1.setId(simpleInfoList.size() + 1);
+    for (String id : infoTable.keySet()) {
+      SimpleInfo info1 = infoTable.get(id).create();
       simpleInfoList.add(info1);
     }
   }
@@ -65,7 +66,6 @@ public class CcApplication {
         userInfo.setSalary(words[5]);
         userInfoList.add(userInfo);
       }
-      reader.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -102,14 +102,19 @@ public class CcApplication {
     initRunningProjList();
   }
 
+  public static void write() {
+    CrawlerInfo info = new CrawlerInfo();
+  }
+
   public static void main(String[] args) {
     init();
+//    initInfoTable();
     SpringApplication.run(CcApplication.class, args);
   }
 
   @RequestMapping(value = "/crawlerinfo.json")
   public CrawlerInfo getCrawlerInfo(@RequestParam("id") String id) {
-    return InfoTable.get(id);
+    return infoTable.get(id);
   }
 
   @RequestMapping(value = "/crawlersimpleinfo.json")
@@ -129,18 +134,30 @@ public class CcApplication {
 
   @RequestMapping(value = "/newcrawlersubmit", method = RequestMethod.POST)
   public void process(@RequestParam Map<String, String> crawlerinfo) {
-    SimpleInfo info = new SimpleInfo();
-    for (String key : crawlerinfo.keySet()) {
-      if (key.equals("program"))
-        info.setProgram(crawlerinfo.get(key));
-      else if (key.equals("programType"))
-        info.setProgramType(crawlerinfo.get(key));
-      else if (key.equals("workingTime"))
-        info.setWorkingTime(crawlerinfo.get(key));
-      else if (key.equals("databaseType"))
-        info.setDatabaseType(crawlerinfo.get(key));
+    CrawlerInfo info = new CrawlerInfo();
+    info.setAddress(crawlerinfo.get("address"));
+    info.setDescription(crawlerinfo.get("description"));
+    info.setProgram(crawlerinfo.get("program"));
+    info.setProgramType(crawlerinfo.get("programType"));
+    info.setDatabaseType(crawlerinfo.get("databaseType"));
+    info.setWorkingTime(crawlerinfo.get("workingTime"));
+    info.setDatabaseAddress(crawlerinfo.get("databaseAddress"));
+    info.setDataItems(crawlerinfo.get("dataItems"));
+    info.setDatabasePassword(crawlerinfo.get("databasePassword"));
+    info.setParameters(crawlerinfo.get("parameters"));
+    info.setTableName(crawlerinfo.get("tableName"));
+
+    info.setId(String.valueOf(simpleInfoList.size() + 1));
+
+    SimpleInfo simple = info.create();
+
+    simpleInfoList.add(simple);
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter("./file/infotable", true));
+      writer.write("\n" + gson.toJson(info, CrawlerInfo.class));
+      writer.close();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-    info.setId(simpleInfoList.size() + 1);
-    simpleInfoList.add(info);
   }
 }

@@ -5,13 +5,23 @@ public class SimpleInfo {
   private String programType;
   private String databaseType;
   private String workingTime;
-  private Integer id;
+  private String id;
 
-  public Integer getId() {
+  public SimpleInfo() {}
+
+  public SimpleInfo(String program, String programType, String databaseType, String workingTime, String id) {
+    this.program = program;
+    this.programType = programType;
+    this.databaseType = databaseType;
+    this.workingTime = workingTime;
+    this.id = id;
+  }
+
+  public String getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(String id) {
     this.id = id;
   }
 
