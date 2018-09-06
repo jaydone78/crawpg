@@ -1,4 +1,4 @@
-package com.example.cc;
+package com.example.cc.controller;
 
 import com.example.cc.models.CrawlerInfo;
 import com.example.cc.models.RunningProj;
@@ -10,27 +10,33 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
+/**
+ * Created by qianjay on 2018/9/6.
+ */
+
 @RestController
-public class CcApplication {
-
-  private static Map<String, CrawlerInfo> infoTable = new HashMap<>();
-  private static List<SimpleInfo> simpleInfoList = new ArrayList<>();
-  private static List<UserInfo> userInfoList = new ArrayList<>();
-  private static List<RunningProj> runningProjList = new ArrayList<>();
+public class RepController {
+  
+  private Map<String, CrawlerInfo> infoTable = new HashMap<>();
+  private List<SimpleInfo> simpleInfoList = new ArrayList<>();
+  private List<UserInfo> userInfoList = new ArrayList<>();
+  private List<RunningProj> runningProjList = new ArrayList<>();
   private static Gson gson = new Gson();
 
+  public RepController() {
+    init();
+  }
 
-  private static void initInfoTable() {
+  private void initInfoTable() {
     try {
       BufferedReader reader = new BufferedReader(new FileReader("./file/infotable"));
       String line;
@@ -43,14 +49,14 @@ public class CcApplication {
     }
   }
 
-  private static void initSimpleInfoList() {
+  private void initSimpleInfoList() {
     for (String id : infoTable.keySet()) {
       SimpleInfo info1 = infoTable.get(id).create();
       simpleInfoList.add(info1);
     }
   }
 
-  private static void initUserInfoList() {
+  private void initUserInfoList() {
     try {
       BufferedReader reader = new BufferedReader(
           new FileReader("./file/userinfo"));
@@ -71,22 +77,13 @@ public class CcApplication {
     }
   }
 
-  private static void initRunningProjList() {
+  private void initRunningProjList() {
     try {
       BufferedReader reader = new BufferedReader(
           new FileReader("./file/running_proc"));
       String line;
       while ((line = reader.readLine()) != null) {
-        String[] words = line.split(" ");
-
-        RunningProj proj = new RunningProj();
-        proj.setProjName(words[0]);
-        proj.setStatus(words[1]);
-        proj.setProjType(words[2]);
-        proj.setDatabaseType(words[3]);
-        proj.setDatabaseAddress(words[4]);
-        proj.setTableName(words[5]);
-        proj.setId(runningProjList.size() + 1);
+        RunningProj proj = gson.fromJson(line, RunningProj.class);
         runningProjList.add(proj);
       }
       reader.close();
@@ -95,21 +92,11 @@ public class CcApplication {
     }
   }
 
-  public static void init() {
+  public void init() {
     initInfoTable();
     initSimpleInfoList();
     initUserInfoList();
     initRunningProjList();
-  }
-
-  public static void write() {
-    CrawlerInfo info = new CrawlerInfo();
-  }
-
-  public static void main(String[] args) {
-    init();
-//    initInfoTable();
-    SpringApplication.run(CcApplication.class, args);
   }
 
   @RequestMapping(value = "/crawlerinfo.json")
@@ -160,4 +147,5 @@ public class CcApplication {
       e.printStackTrace();
     }
   }
+
 }

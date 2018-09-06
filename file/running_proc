@@ -1,3 +1,3 @@
-测试 等待 blank mongodb test2 aiqiyi_zongyi2
-测试 运行中 blank mongodb test3 aiqiyi_zongyi2
-测试 未部署 blank mysql test4 aiqiyi_zongyi2
+{"projName":"测试","projType":"blank","status":"等待","databaseType":"mongodb","databaseAddress":"test2","tableName":"aiqiyi_zongyi2","id":1}
+{"projName":"测试","projType":"blank","status":"运行中","databaseType":"mongodb","databaseAddress":"test3","tableName":"aiqiyi_zongyi2","id":2}
+{"projName":"测试","projType":"blank","status":"未部署","databaseType":"mysql","databaseAddress":"test4","tableName":"aiqiyi_zongyi2","id":3}
