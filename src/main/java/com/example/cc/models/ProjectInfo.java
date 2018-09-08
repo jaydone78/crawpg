@@ -3,14 +3,14 @@ package com.example.cc.models;
 /**
  * Created by qianjay on 2018/9/4.
  */
-public class RunningProj {
+public class ProjectInfo {
   private String projName;
   private String projType;
   private String status;
   private String databaseType;
   private String databaseAddress;
   private String tableName;
-  private Integer id;
+  private String id;
 
   public String getProjName() {
     return projName;
@@ -60,11 +60,11 @@ public class RunningProj {
     this.tableName = tableName;
   }
 
-  public Integer getId() {
+  public String getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(String id) {
     this.id = id;
   }
 }

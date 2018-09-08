@@ -1,7 +1,7 @@
 package com.example.cc.controller;
 
 import com.example.cc.models.CrawlerInfo;
-import com.example.cc.models.RunningProj;
+import com.example.cc.models.ProjectInfo;
 import com.example.cc.models.SimpleInfo;
 import com.example.cc.models.UserInfo;
 import com.google.gson.Gson;
@@ -29,7 +29,7 @@ public class RepController {
   private Map<String, CrawlerInfo> infoTable = new HashMap<>();
   private List<SimpleInfo> simpleInfoList = new ArrayList<>();
   private List<UserInfo> userInfoList = new ArrayList<>();
-  private List<RunningProj> runningProjList = new ArrayList<>();
+  private List<ProjectInfo> runningProjList = new ArrayList<>();
   private static Gson gson = new Gson();
 
   public RepController() {
@@ -83,7 +83,7 @@ public class RepController {
           new FileReader("./file/running_proc"));
       String line;
       while ((line = reader.readLine()) != null) {
-        RunningProj proj = gson.fromJson(line, RunningProj.class);
+        ProjectInfo proj = gson.fromJson(line, ProjectInfo.class);
         runningProjList.add(proj);
       }
       reader.close();
@@ -115,7 +115,7 @@ public class RepController {
   }
 
   @RequestMapping(value = "/projinfo.json")
-  public List<RunningProj> getRunningProjList() {
+  public List<ProjectInfo> getRunningProjList() {
     return runningProjList;
   }
 
@@ -148,4 +148,26 @@ public class RepController {
     }
   }
 
+  @RequestMapping(value = "/newjobsubmit", method = RequestMethod.POST)
+  public void addNewJob(@RequestParam Map<String, String> pinfo) {
+    ProjectInfo info = new ProjectInfo();
+
+    info.setDatabaseAddress(pinfo.get("databaseAddress"));
+    info.setDatabaseType(pinfo.get("databaseType"));
+    info.setProjName(pinfo.get("program"));
+    info.setProjType(pinfo.get("programType"));
+    info.setTableName(pinfo.get("tableName"));
+
+    info.setId(String.valueOf(runningProjList.size() + 1));
+
+    runningProjList.add(info);
+    
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter("./file/running_proc", true));
+      writer.write("\n" + gson.toJson(info, ProjectInfo.class));
+      writer.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }
